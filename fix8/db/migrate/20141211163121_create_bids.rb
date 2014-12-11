@@ -4,7 +4,8 @@ class CreateBids < ActiveRecord::Migration
       t.integer :price
       t.integer :contractor_id
       t.integer :job_id
-      t.integer :status, default: 0 #enum
+      t.text    :comment
+      t.boolean :accepted
 
       t.timestamps
     end
