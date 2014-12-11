@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
 
   def create
     user
-    if user.save && user.authenticate(password)
+    if user && user.authenticate(password)
      session[:user_id] = user.id
-     redirect_to landing_page
+     redirect_to new_user_path #to test for success
     else
       render :new
     end
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def password
-    params.require(:sessions).permit(:password)
+    params[:sessions][:password]
   end
 
   def landing_page
@@ -29,8 +29,6 @@ class SessionsController < ApplicationController
     else
       #page to view available jobs
     end
-    #If they are a landlord, send them to their landing page
-    #Else send them to the Contractor page
   end
 
 end
