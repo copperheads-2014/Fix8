@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-     session[:user_id] = @user.id
+      session[:user_id] = @user.id
        #Change the redirect to the proper page
-     render "Success"
+       render "Success"
     else
       render :new
     end
