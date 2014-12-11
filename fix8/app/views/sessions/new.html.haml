@@ -1,7 +1,7 @@
 %h1 LOGIN
 = form_for :sessions, :url => {:controller => 'sessions', :action => 'create'} do |f|
   = label_tag :email, "Email"
-  = text_field :user, "email"
+  = text_field :sessions, "email"
   = label_tag :password
-  = text_field :user, "password"
+  = text_field :sessions, "password"
   = submit_tag "Login"
