@@ -10,7 +10,7 @@ RSpec.describe Job, :type => :model do
     end
 
     it 'requires a description' do
-      job.job_description = 'This is a job description'
+      job.description = 'This is a job description'
       expect(job.save).to eq(true)
     end
 
