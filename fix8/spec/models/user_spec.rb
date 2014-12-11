@@ -33,5 +33,16 @@ RSpec.describe User, :type => :model do
       user.email = "abc@a.c"
       expect(user.save).to eq(false)
     end
+
+    it 'requires email to be unique' do
+      user2 = user.clone
+      user.save
+      expect(user2.save).to eq(false)
+    end
+
+    it 'requires address to be present' do
+      user.address = nil
+      expect(user.save).to eq(false)
+    end
   end
 end
