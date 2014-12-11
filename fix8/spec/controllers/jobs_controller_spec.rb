@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe JobController, :type => :controller do
+RSpec.describe JobsController, :type => :controller do
 
-  describe "GET new" do
+    describe "GET new" do
     it "returns http success" do
       get :new
       expect(response).to have_http_status(:success)
