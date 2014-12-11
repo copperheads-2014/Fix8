@@ -1,0 +1,14 @@
+= form_for @user do |f|
+  = label_tag :email, "Email"
+  = text_field :user, "email"
+  = label_tag :password
+  = text_field :user, "password"
+  = label_tag :password_confirmation
+  = text_field :user, "password_confirmation"
+  = label_tag :landlord
+  = radio_button_tag :user_type, "Landlord"
+  = label_tag :contractor
+  = radio_button_tag :user_type, "Contractor"
+  = label_tag :address
+  = text_field :user, "address"
+  = submit_tag "Create Account"
