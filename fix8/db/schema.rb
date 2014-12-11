@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(version: 20141211164102) do
     t.integer  "price"
     t.integer  "contractor_id"
     t.integer  "job_id"
-    t.integer  "status",        default: 0
+    t.text     "comment"
+    t.boolean  "accepted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

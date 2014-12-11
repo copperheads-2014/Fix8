@@ -7,6 +7,7 @@ class CreateJobs < ActiveRecord::Migration
       t.datetime  :end_date
       t.integer   :max_bid
       t.integer   :bid_length
+
       t.timestamps
     end
   end
