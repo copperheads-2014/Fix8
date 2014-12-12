@@ -76,9 +76,11 @@ ActiveRecord::Schema.define(version: 20141211164102) do
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "password_digest"
-    t.string   "user_type"
-    t.string   "address"
+    t.string   "name"
+    t.string   "password_hash"
+    t.integer  "user_type",     default: 0
+    t.text     "address"
+    t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
