@@ -1,0 +1,36 @@
+- if @job.errors.any?
+  .alert.alert-danger.fade.in
+    %a.close{"data-dismiss" => "alert", :href => "#"} ×
+    %ul
+    - @job.errors.full_messages.each do |msg|
+      %li
+        = msg
+
+= form_for @job do |f|
+  = f.collection_select:property_id, @properties.order(:name), :id, :name,   {prompt: "What property is this job for?"}, {class:"form-control input-sm ", style: "width: 65%;"}
+
+  /= link_to "Add a property", new_property_path,  :target => "_blank"
+
+  = label_tag :description, "Description"
+  = text_area_tag(:description, nil, columns: 30, rows: 2, class: "form-control")
+
+  = label_tag :start_date, "Start Date"
+  = date_field :start_date, :start_date, :placeholder => "12/10/2014", id: "start_date"
+
+  = label_tag :end_date, "End Date"
+  = date_field :end_date, :end_date, :placeholder => "12/10/2014", id: "end_date"
+
+  = label_tag :max_bid, "Max Bid"
+  = text_field :max_bid, 1, id: "max_bid"
+  = label_tag :bid_length
+  = f.select(:bid_length, options_for_select([['1 Day', 1], ['2 Days', 2], ['3 Days', 3], ['4 Days', 4], ['5 Days', 5], ['6 Days', 6], ['7 Days', 7], ['8 Days', 8]]))
+
+  = submit_tag "Create Job"
+
+:javascript
+  $(function() {
+    $('#start_date').datepicker();
+    $('#end_date').datepicker();
+  });
+
+
