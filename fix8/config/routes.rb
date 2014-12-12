@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  post 'sessions/create'
+  post 'sessions' => 'sessions#create'
 
-  get 'sessions/destroy'
+  delete 'sessions' => 'sessions#destroy'
 
   get 'properties/new'
 
