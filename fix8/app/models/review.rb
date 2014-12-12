@@ -1,11 +1,12 @@
 class Review < ActiveRecord::Base
-  enum review_type:  [ :for_contractor, :for_landlord ]
+  enum review_for: [:landlord, :contractor]
 
-  belongs_to  :bid
+  belongs_to :bid
 
-  validates :bid_id, presence: true
-  validates :review_type, presence: true
-  validates_uniqueness_of :bid_id, scope: :review_type
-  validates :rating, :inclusion => {:in => [0,1,2,3,4,5,6,7,8,9,10]}, presence: true
+  validates :bid, presence: true, uniqueness: true, {scope: :review_for}
+  validates :review_for, presence: true
+  validates :rating, inclusion: {in: [0,1,2,3,4,5,6,7,8,9,10]}, presence: true
 
+  scope :for_contractor, -> { where(review_for: :contractor) }
+  scope :for_landlord,   -> { where(review_for: :landlord) }
 end
