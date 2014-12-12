@@ -23,4 +23,25 @@ RSpec.describe Review, :type => :model do
         expect(review3.errors[:bid_id]).to include('has already been taken')
       end
     end
+
+    context 'rating' do
+      it 'requires a rating to be given' do
+        review.rating = nil
+        review.save
+        expect(review.errors[:rating]).to include('is not included in the list')
+      end
+
+      it 'does not allow a rating larger than 10' do
+        review.rating = 11
+        review.save
+        expect(review.errors[:rating]).to include('is not included in the list')
+      end
+
+      it 'does not allow a rating less than 0' do
+        review.rating = -1
+        review.save
+        expect(review.errors[:rating]).to include('is not included in the list')
+      end
+    end
+  end
 end
