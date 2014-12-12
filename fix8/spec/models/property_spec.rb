@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Property, :type => :model do
   let(:property) {Property.new(owner_id: 1, name: "The Lucas", address: "123 Aussie Boulevard")}
 
-  describe 'Review Validations' do
+  describe 'Validations' do
     it "is valid with an owner_id, name and address" do
       property = Property.new(owner_id: 1, name: "The Lucas", address: "123 Aussie Boulevard")
       property.valid?
@@ -25,4 +25,9 @@ RSpec.describe Property, :type => :model do
       expect(property.errors[:address]).to include("can't be blank")
     end
   end
+
+  describe
+
+
+
 end
