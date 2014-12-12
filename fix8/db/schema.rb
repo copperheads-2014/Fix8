@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20141211164102) do
     t.text     "description"
     t.integer  "rating"
     t.integer  "bid_id"
-    t.integer  "review_type", default: 0
+    t.integer  "review_for",  default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -84,5 +84,7 @@ ActiveRecord::Schema.define(version: 20141211164102) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

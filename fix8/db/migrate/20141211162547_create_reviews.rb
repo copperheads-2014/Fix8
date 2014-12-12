@@ -4,7 +4,7 @@ class CreateReviews < ActiveRecord::Migration
       t.text      :description
       t.integer   :rating
       t.integer   :bid_id
-      t.integer   :review_type, default: 0 #enum
+      t.integer   :review_for, default: 0 #enum
 
       t.timestamps
     end
