@@ -7,16 +7,44 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
   include Faker
 
+  Skill.create(name: 'Plumbing')
+  Skill.create(name: 'Painting')
+  Skill.create(name: 'Roofing')
+  Skill.create(name: 'Framing')
+  Skill.create(name: 'Flooring')
+  Skill.create(name: 'Electricity')
+  Skill.create(name: 'Masonry')
+  Skill.create(name: 'Glazing')
+  Skill.create(name: 'Demolition')
+  Skill.create(name: 'Carpentry')
+
   10.times do
     lord = User.create(email: Internet.email, name: Name.name, address: Address.street_address, phone_number: PhoneNumber.cell_phone,
                 password: 'testtest')
     lord.properties << Property.create(name: Company.name, address: Address.street_address)
   end
-  5.times do
-    user = User.create(email: Internet.email, name: Name.name, address: Address.street_address, phone_number: PhoneNumber.cell_phone,
+  30.times do
+    cont = User.create(email: Internet.email, name: Name.name, address: Address.street_address, phone_number: PhoneNumber.cell_phone,
                 password: 'testtest')
-    user.contractor!
+    cont.contractor!
+    cont.skills << Skill.all.sample
   end
+
+  20.times do
+    job = Job.new(description: 'Shit be broken', start_date: Time.now + 1.day, end_date: Time.now + 5.day,
+                  max_bid: (100..1000).to_a.sample, bid_length: (1..14).to_a.sample)
+    job.skills << Skill.all.sample
+    Property.all.sample.jobs << job
+  end
+
+  100.times do
+    bid = Bid.new(price: (100..1000).to_a.sample)
+    bid.contractor = User.all.where(user_type: 'contractor').sample
+    bid.job = Job.all.sample
+    bid.save
+  end
+
+
 
 
   # grant = User.create(email: 'gphummer@gmail.com', name: 'Grant Hummer', address: '680 N. Lake Shore Dr.',
