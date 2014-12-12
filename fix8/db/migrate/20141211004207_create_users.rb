@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :email
       t.string    :name
       t.string    :password_hash
-      t.integer   :user_type, default: 0 #enum, Landlord: 0; Contractor: 1
+      t.integer   :user_type, default: 0 #enum, landlord: 0; contractor: 1
       t.text      :address
       t.string    :phone_number
 
