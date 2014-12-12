@@ -1,0 +1,4 @@
+%h1
+  ="You are a #{@user.user_type}"
+= render partial: "landlord" if @user.user_type == 'landlord'
+= render partial: "contractor" if @user.user_type == 'contractor'
