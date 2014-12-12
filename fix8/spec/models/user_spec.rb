@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  let(:user) {User.new(email: 'a@a.com', password: 'test123', password_confirmation: 'test123', user_type: 'Landlord', address: '123 Fake Street')}
+  let(:user) {User.new(email: 'a@a.com', password: 'test123', password_confirmation: 'test123', user_type: 'landlord', address: '123 Fake Street')}
   describe 'validations' do
     it 'requires the password to be a minimum of 6 characters' do
       user.password = 'test'
@@ -9,13 +9,13 @@ RSpec.describe User, :type => :model do
       expect(user.save).to eq(false)
     end
 
-    it 'allows Landlord as an user type' do
-      user.user_type = 'Landlord'
+    it 'allows landlord as an user type' do
+      user.user_type = 'landlord'
       expect(user.save).to eq(true)
     end
 
-    it 'allows Contractor as an user type' do
-      user.user_type = 'Contractor'
+    it 'allows contractor as an user type' do
+      user.user_type = 'contractor'
       expect(user.save).to eq(true)
     end
 
