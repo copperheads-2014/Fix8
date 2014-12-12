@@ -20,5 +20,13 @@ class User < ActiveRecord::Base
   validates :phone_number, presence: true
   validates :name, presence: true
   enum user_type: [ :landlord, :contractor ]
+
+  def received_reviews
+    if self.user_type == 0
+      self.reviews_from_contractors.for_landlord
+    else
+      self.reviews_from_landlords.for_contractor
+    end
+  end
 end
 
