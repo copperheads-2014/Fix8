@@ -1,0 +1,27 @@
+- if @job.errors.any?
+  .alert.alert-danger.fade.in
+    %a.close{"data-dismiss" => "alert", :href => "#"} ×
+    %ul
+    - @job.errors.full_messages.each do |msg|
+      %li
+        = msg
+
+= form_for @job do |f|
+  = f.collection_select:property_id, @properties.order(:name), :id, :name,   {prompt: "What property is this job for?"}, {class:"form-control input-sm ", style: "width: 65%;"}
+
+
+  /= link_to "Add a property", new_property_path,  :target => "_blank"
+  = label_tag :property_id, "Property"
+
+  = label_tag :description, "Description"
+  = text_field :description, "description"
+  -# = label_tag :start_date, "Start Date"
+  -# = date_field :start_date
+  -# = label_tag :end_date, "End Date"
+  -# = date_field :end_date
+  = label_tag :max_bid, "Max Bid"
+  = text_field :max_bid, 1
+  = label_tag :bid_length
+  = text_field :bid_length, 1
+
+  = submit_tag "Create Job"
