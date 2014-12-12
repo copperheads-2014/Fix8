@@ -35,12 +35,14 @@ RSpec.describe Property, :type => :model do
     end
 
     it 'has many jobs' do
-      job = Job.new(property_id: 1, description: 'This is a job description', start_date: '2014-12-11 08:40:43 -0600', end_date: '2014-12-11 08:40:43 -0600', max_bid: 200, bid_length: 2)
-
-
-
-
+      job = Job.new(description: 'This is a job description', start_date: '2014-12-11 08:40:43 -0600', end_date: '2014-12-11 08:40:43 -0600', max_bid: 200, bid_length: 2)
+      job2 = Job.new(description: 'This is another description', start_date: '2014-12-11 08:40:43 -0600', end_date: '2014-12-11 08:40:43 -0600', max_bid: 400, bid_length: 7)
+      property.jobs << job
+      property.jobs << job2
+      expect(property.jobs.size).to eq(2)
     end
+
+
 
   end
 
