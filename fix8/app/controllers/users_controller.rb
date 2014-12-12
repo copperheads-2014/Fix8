@@ -5,10 +5,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.user_type = params[:user_type]
     if @user.save
       session[:user_id] = @user.id
        #Change the redirect to the proper page
-       redirect_to sessions_new_path
+       redirect_to home_path
     else
       render :new
     end
