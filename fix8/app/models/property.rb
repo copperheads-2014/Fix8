@@ -7,5 +7,5 @@ class Property < ActiveRecord::Base
   validates :name, presence: true
 
   validates :address, presence: true
-
+  validates :owner_id, presence: true
 end
