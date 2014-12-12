@@ -1,4 +1,6 @@
 = form_for @user do |f|
+  = label_tag :name, "Name"
+  = text_field :user, "name"
   = label_tag :email, "Email"
   = text_field :user, "email"
   = label_tag :password
@@ -11,4 +13,6 @@
   = radio_button_tag :user_type, "contractor"
   = label_tag :address
   = text_field :user, "address"
+  = label_tag :phone
+  = text_field :user, "phone_number"
   = submit_tag "Create Account"

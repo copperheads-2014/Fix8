@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6}
   validates :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, uniqueness: true
   validates :address, presence: true
-  # validates :phone_number, presence: true
+  validates :phone_number, presence: true
+  validates :name, presence: true
   enum user_type: [ :landlord, :contractor ]
 end
 
