@@ -9,6 +9,7 @@
 = form_for @job do |f|
   = f.collection_select:property_id, @properties.order(:name), :id, :name,   {prompt: "What property is this job for?"}, {class:"form-control input-sm ", style: "width: 65%;"}
 
+<<<<<<< HEAD
   /= link_to "Add a property", new_property_path,  :target => "_blank"
 
   = label_tag :description, "Description"
