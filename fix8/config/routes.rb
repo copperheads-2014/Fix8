@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
 
+  get 'sessions/new'
+
+  post 'sessions/create'
+
+  get 'sessions/destroy'
+
   get 'properties/new'
 
   post 'properties/create'
