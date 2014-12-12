@@ -4,12 +4,20 @@ class User < ActiveRecord::Base
   has_many  :skills, through: :user_skills
   has_many  :properties, foreign_key: "owner_id"
   has_many  :jobs, through: :properties
+  has_many :received_bids, through: :jobs, source: :bids
+  has_many :reviews_from_contractors, through: :received_bids, source: :reviews
+  has_many :reviews_from_landlords, through: :bids, source: :reviews
 
+  # scope :for_contractors, Proc.new {
+  #   where("review_type = ?", 0)
+  # }
   # need to add two 'through' review associations.
 
   has_secure_password
   validates :password, length: { minimum: 6}
   validates :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, uniqueness: true
   validates :address, presence: true
+  # validates :phone_number, presence: true
   enum user_type: [ :landlord, :contractor ]
 end
+
