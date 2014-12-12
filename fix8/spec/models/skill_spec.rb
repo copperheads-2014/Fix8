@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Skill, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'Review Validations' do
+    it "is valid with an name" do
+      skill = Skill.new(name: "nunchaku skills")
+      skill.valid?
+      expect(skill.errors).to_not include("can't be blank")
+    end
+
+  end
 end
