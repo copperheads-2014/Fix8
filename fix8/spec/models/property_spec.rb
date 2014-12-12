@@ -1,13 +1,5 @@
 require 'rails_helper'
 
-  # create_table "properties", force: true do |t|
-  #   t.integer  "owner_id"
-  #   t.string   "name"
-  #   t.text     "address"
-  #   t.datetime "created_at"
-  #   t.datetime "updated_at"
-  # end
-
 RSpec.describe Property, :type => :model do
   let(:property) {Property.new(owner_id: 1, name: "The Lucas", address: "123 Aussie Boulevard")}
 
@@ -32,6 +24,5 @@ RSpec.describe Property, :type => :model do
       property.valid?
       expect(property.errors[:address]).to include("can't be blank")
     end
-
   end
 end
