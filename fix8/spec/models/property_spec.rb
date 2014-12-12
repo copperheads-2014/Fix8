@@ -26,7 +26,23 @@ RSpec.describe Property, :type => :model do
     end
   end
 
-  describe
+  describe 'Associations' do
+
+    it 'has a landlord' do
+      grant = User.create(name: 'Grant', email: 'gphummer@gmail.com', password: 'testtest', address: '666 elm st')
+      property.landlord = grant
+      expect(property.landlord.name).to eq('Grant')
+    end
+
+    it 'has many jobs' do
+      job = Job.new(property_id: 1, description: 'This is a job description', start_date: '2014-12-11 08:40:43 -0600', end_date: '2014-12-11 08:40:43 -0600', max_bid: 200, bid_length: 2)
+
+
+
+
+    end
+
+  end
 
 
 
