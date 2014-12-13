@@ -22,7 +22,7 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:property_id, :description, :start_date, :end_date, :max_bid, :bid_length)
+    params.require(:job).permit(:property_id, :description, :start_date, :end_date, :max_bid, :bid_length, :title)
   end
 
 
