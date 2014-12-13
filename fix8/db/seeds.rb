@@ -31,7 +31,7 @@
   end
 
   20.times do
-    job = Job.create(property_id: 1,description: 'This be broken', start_date: Time.now + 1.day, end_date: Time.now + 5.day,
+    job = Job.create(title: Faker::Commerce.product_name, property_id: 1,description: 'This be broken', start_date: Time.now + 1.day, end_date: Time.now + 5.day,
                   max_bid: (100..1000).to_a.sample, bid_length: (1..14).to_a.sample)
     job.skills << Skill.all.sample
     Property.all.sample.jobs << job
