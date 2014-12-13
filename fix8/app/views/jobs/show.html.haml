@@ -4,7 +4,8 @@
 
 %div
   = @job.description
-
+%div
+  = link_to @job.landlord.name, @job.landlord
 %ul
   Bids on this job
   - @job.recent_bids.each do |bid|
