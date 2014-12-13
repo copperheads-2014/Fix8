@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def jobs_i_can_bid_on
-    Job.all
+    Job.all - jobs_i_bid_on
   end
 
   def received_reviews
