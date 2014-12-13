@@ -6,10 +6,11 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
+
     #@job.property_id = params[:property_id]
     #@properties = Property.all
     if @job.save
-       redirect_to jobs_path
+       redirect_to home_path
     else
       render :new
     end
