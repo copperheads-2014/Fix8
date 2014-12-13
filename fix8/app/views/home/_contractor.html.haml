@@ -1,5 +1,8 @@
 %div
   %ul
-    My bids
+    My open bids
   %ul
-    Open bids
+    Jobs I can bid on
+    - @my_jobs.each do |j|
+      %li
+        =j.description
