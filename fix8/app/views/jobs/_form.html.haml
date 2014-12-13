@@ -11,7 +11,7 @@
     %li
       = f.collection_select :property_id, @properties.order(:name), :id, :name,   {prompt: "What property is this job for?"}, {class:"form-control input-sm ", style: "width: 65%;"}
 
-    = link_to "Add a property", properties_new_path,  :target => "_blank"
+    = link_to "Add a property", properties_new_path#,  :target => "_blank"
     %li
       = f.label :description, "Description"
       = f.text_area(:description, columns: 30, rows: 2, class: "form-control")

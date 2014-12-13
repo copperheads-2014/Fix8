@@ -7,10 +7,9 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
-
+    @property.owner_id = @user.id
     if @property.save
-      # @user.properties << @property
-      # redirect_to properties_path
+      redirect_to new_job_path
     else
       render :new
     end
@@ -19,7 +18,7 @@ class PropertiesController < ApplicationController
   private
 
     def property_params
-      params.require(:game).permit(:name, :address)
+      params.require(:property).permit(:name, :address)
     end
 
 end
