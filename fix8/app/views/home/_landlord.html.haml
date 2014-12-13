@@ -1,4 +1,6 @@
 %div
   %ul
-    My current jobs
-  = button_to 'Add a Job'#, new_jobs_path
+    - @user.jobs.each do |job|
+      %li= job.description
+  = link_to 'Add a Job', new_job_path
+

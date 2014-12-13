@@ -27,13 +27,4 @@ class SessionsController < ApplicationController
     params[:sessions][:password]
   end
 
-  def landing_page
-    #Landlord is 0
-    if user.user_type == 0
-      #page to view bids
-    else
-      #page to view available jobs
-    end
-  end
-
 end

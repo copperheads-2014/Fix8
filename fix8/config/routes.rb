@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   post 'sessions' => 'sessions#create'
 
-  delete 'sessions' => 'sessions#destroy'
+  post 'sessions/destroy'
 
   get 'properties/new'
 

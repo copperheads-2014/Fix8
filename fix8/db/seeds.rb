@@ -20,12 +20,12 @@
 
   10.times do
     lord = User.create(email: Internet.email, name: Name.name, address: Address.street_address, phone_number: PhoneNumber.cell_phone,
-                password: 'testtest')
+                password: 'testtest', user_type: 'landlord')
     lord.properties << Property.create(name: Company.name, address: Address.street_address)
   end
   30.times do
     cont = User.create(email: Internet.email, name: Name.name, address: Address.street_address, phone_number: PhoneNumber.cell_phone,
-                password: 'testtest')
+                password: 'testtest', user_type: 'contractor')
     cont.contractor!
     cont.skills << Skill.all.sample
   end
