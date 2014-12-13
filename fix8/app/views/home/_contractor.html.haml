@@ -3,8 +3,8 @@
     My open bids
   %ul
     Jobs I can bid on
-    - @my_jobs.each do |j|
+    - @my_jobs.each do |job|
       %li
-        = link_to j.description, j
+        = link_to job.title, job
 
 
