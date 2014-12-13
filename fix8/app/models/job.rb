@@ -11,4 +11,8 @@ class Job < ActiveRecord::Base
     bids.order(created_at: :desc)
   end
 
+  def landlord
+    property.landlord
+  end
+
 end
