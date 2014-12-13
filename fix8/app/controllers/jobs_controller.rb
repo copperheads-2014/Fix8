@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   def new
     @job = Job.new
-    @properties = Property.all
+    @properties = @user.properties
   end
 
   def create
