@@ -7,7 +7,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     #@job.property_id = params[:property_id]
-    @properties = Property.all
+    #@properties = Property.all
     if @job.save
        redirect_to jobs_path
     else
@@ -21,7 +21,7 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:description, :start_date, :end_date, :max_bid, :bid_length)
+    params.require(:job).permit(:property_id, :description, :start_date, :end_date, :max_bid, :bid_length)
   end
 
 
