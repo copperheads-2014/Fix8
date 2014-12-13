@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :users, only: [:create, :new]
 
-  resources :jobs
-  resources :bids, only: [:create, :new]
+  resources :jobs do
+    resources :bids, only: [:create, :new]
+  end
+
   # You can have the root of your site routed with "root"
   root 'home#index'
 
