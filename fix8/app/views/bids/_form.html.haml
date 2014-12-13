@@ -1,0 +1,12 @@
+= form_for @bid, url: job_bids_path do |f|
+  %ul
+    %li
+      = f.label :price, "Bid $"
+      = f.text_field :price, :placeholder => "2000"
+    %li
+      = f.label :comment, "Comment"
+      = f.text_area :comment, :placeholder => "You want copper for plex?"
+    %li
+      = f.submit
+
+

@@ -17,8 +17,13 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   enum user_type: [ :landlord, :contractor ]
 
+  def jobs_i_bid_on
+    job_ids = bids.pluck(:job_id).uniq
+    job_ids.map { |job_id| Job.find(job_id) }
+  end
+
   def jobs_i_can_bid_on
-    Job.all
+    Job.all - jobs_i_bid_on
   end
 
   def received_reviews

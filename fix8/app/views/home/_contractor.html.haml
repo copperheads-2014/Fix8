@@ -1,6 +1,8 @@
 %div
   %ul
     My open bids
+    - @user.jobs_i_bid_on.each do |job|
+      %li= link_to job.title, job
   %ul
     Jobs I can bid on
     - @my_jobs.each do |job|
