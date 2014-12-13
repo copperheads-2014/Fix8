@@ -9,7 +9,4 @@
     .container
       %header
         = render partial: 'layouts/header'
-      -if @user
-        = form_for :sessions, :url => {:controller => 'sessions', :action => 'destroy'} do |f|
-          %button Logout
       = yield
