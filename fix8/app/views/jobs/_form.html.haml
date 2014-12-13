@@ -13,7 +13,10 @@
 
     = link_to "Add a property", properties_new_path#,  :target => "_blank"
     %li
-      = f.label :description, "Description"
+      = f.label :title, "Job Title"
+      = f.text_field :title, :placeholder => "Fix the sink"
+    %li
+      = f.label :description, "Job Description"
       = f.text_area(:description, columns: 30, rows: 2, class: "form-control")
     %li
       = f.label :start_date, "Start Date"
