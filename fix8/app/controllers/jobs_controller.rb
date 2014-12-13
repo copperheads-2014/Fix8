@@ -1,15 +1,16 @@
 class JobsController < ApplicationController
   def new
     @job = Job.new
-    @properties = Property.all
+    @properties = @user.properties
   end
 
   def create
     @job = Job.new(job_params)
+
     #@job.property_id = params[:property_id]
     #@properties = Property.all
     if @job.save
-       redirect_to jobs_path
+       redirect_to home_path
     else
       render :new
     end
@@ -21,7 +22,7 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:property_id, :description, :start_date, :end_date, :max_bid, :bid_length)
+    params.require(:job).permit(:property_id, :description, :start_date, :end_date, :max_bid, :bid_length, :title)
   end
 
 

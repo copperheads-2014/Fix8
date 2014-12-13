@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   enum user_type: [ :landlord, :contractor ]
 
+  def jobs_i_can_bid_on
+    Job.all
+  end
+
   def received_reviews
     if self.user_type == 0
       self.reviews_from_contractors.for_landlord
