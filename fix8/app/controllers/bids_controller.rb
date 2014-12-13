@@ -7,6 +7,11 @@ class BidsController < ApplicationController
     @bid = Bid.new(bid_params)
     @bid.contractor_id = @user.id
     @bid.job_id = params[:job_id]
+    if @bid.save
+      redirect_to home_path
+    else
+      render :new
+    end
 
   end
 
