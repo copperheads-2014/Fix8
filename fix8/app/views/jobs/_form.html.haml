@@ -17,10 +17,10 @@
       = f.text_area(:description, columns: 30, rows: 2, class: "form-control")
     %li
       = f.label :start_date, "Start Date"
-      = f.text_field :start_date, placeholder: "12/10/2014", id: "start_date"
+      = f.date_select :start_date, placeholder: "12/10/2014", id: "start_date"
     %li
       = f.label :end_date, "End Date"
-      = f.text_field :end_date, :placeholder => "12/10/2014", id: "end_date"
+      = f.date_select :end_date, :placeholder => "12/10/2014", id: "end_date"
     %li
       = f.label :max_bid, "Max Bid"
       = f.text_field :max_bid, id: "max_bid"
