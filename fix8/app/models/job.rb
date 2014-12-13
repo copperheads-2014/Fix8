@@ -7,5 +7,8 @@ class Job < ActiveRecord::Base
 
   validates :start_date, :end_date, presence: true
 
+  def recent_bids
+    bids.order(created_at: :desc)
+  end
 
 end
