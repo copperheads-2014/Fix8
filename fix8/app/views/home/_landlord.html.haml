@@ -1,7 +1,7 @@
 %div
   %ul
     - @user.jobs.each do |job|
-      %li= job.description
+      %li= link_to job.title, job
   = link_to 'Add a Job', new_job_path
 
 
