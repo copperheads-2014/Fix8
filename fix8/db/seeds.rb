@@ -44,6 +44,13 @@
     bid.save
   end
 
+  feelings = ["happy", "sad", "glad", "i will kill you", "love", "hate", "lucas"]
+
+  100.times do |bid|
+    Review.create(description: feelings.sample, rating: rand(11), bid_id: bid, review_for: 'landlord')
+    Review.create(description: feelings.sample, rating: rand(11), bid_id: bid, review_for: 'contractor')
+  end
+
 
 
 
