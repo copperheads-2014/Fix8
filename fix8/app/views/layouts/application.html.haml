@@ -6,7 +6,10 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    -if @user 
-      = form_for :sessions, :url => {:controller => 'sessions', :action => 'destroy'} do |f|
-        %button Logout
-    = yield
+    .container
+      %header
+        = render partial: 'layouts/header'
+      -if @user
+        = form_for :sessions, :url => {:controller => 'sessions', :action => 'destroy'} do |f|
+          %button Logout
+      = yield
