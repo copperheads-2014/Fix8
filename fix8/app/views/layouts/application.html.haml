@@ -6,6 +6,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = form_for :sessions, :url => {:controller => 'sessions', :action => 'destroy'} do |f|
-      %button Logout
+    -if @user 
+      = form_for :sessions, :url => {:controller => 'sessions', :action => 'destroy'} do |f|
+        %button Logout
     = yield
