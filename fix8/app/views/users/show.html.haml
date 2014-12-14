@@ -1,10 +1,10 @@
 %h1 User
-= @user.name
-%p= @user.address
-%p= @user.phone_number
+= @viewed_user.name
+%p= @viewed_user.address
+%p= @viewed_user.phone_number
 %ul
   Received Reviews
-  -@user.received_reviews.each do |review|
+  -@viewed_user.received_reviews.each do |review|
     %li
       Rating
       =review.rating
