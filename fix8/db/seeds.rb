@@ -20,12 +20,12 @@
 
   10.times do
     lord = User.create(email: Internet.email, name: Name.name, address: Address.street_address, phone_number: PhoneNumber.cell_phone,
-                password: 'testtest', user_type: 'landlord')
+                password: 'testtest', user_type: 0)
     lord.properties << Property.create(name: Company.name, address: Address.street_address)
   end
   30.times do
     cont = User.create(email: Internet.email, name: Name.name, address: Address.street_address, phone_number: PhoneNumber.cell_phone,
-                password: 'testtest', user_type: 'contractor')
+                password: 'testtest', user_type: 1)
     cont.contractor!
     cont.skills << Skill.all.sample
   end
@@ -39,7 +39,7 @@
 
   100.times do
     bid = Bid.new(price: (100..1000).to_a.sample)
-    bid.contractor = User.all.where(user_type: 'contractor').sample
+    bid.contractor = User.all.where(user_type: 1).sample
     bid.job = Job.all.sample
     bid.save
   end

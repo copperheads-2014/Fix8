@@ -1,7 +1,12 @@
 %div
+  %h2 Open Jobs
   %ul
     - @pending_jobs.each do |job|
       %li= link_to job.title, job
+  %h2 Completed Jobs
+  %ul
+    - @completed_jobs.each do |completed_job|
+      %li= link_to completed_job.title, completed_job
   = link_to 'Add a Job', new_job_path, id: "add_a_job_link"
 
 
