@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :new, :show]
 
   resources :jobs do
-    resources :bids, only: [:create, :new]
+    resources :bids, only: [:create, :new] do
+      resources :reviews, only: [:create, :new]
+    end
   end
 
   # You can have the root of your site routed with "root"
