@@ -1,6 +1,6 @@
-%h1
-= render partial: "landlordbids" if @user.user_type == 'landlord'
-= render partial: "contractor" if @user.user_type == 'contractor'
+%h1= @job.title
+
+%hr
 
 %div
   = @job.description
@@ -13,5 +13,4 @@
       = bid.contractor.name
       = number_to_currency(bid.price)
       = bid.created_at
-
-= link_to "Place a new bid on this", new_job_bid_path(@job)
+      = button_to ''
