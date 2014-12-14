@@ -11,9 +11,16 @@ class JobsController < ApplicationController
     #@job.property_id = params[:property_id]
     #@properties = Property.all
     if @job.save
-       redirect_to home_path
+      respond_to do |format| 
+        format.html { redirect_to home_path, notice: 'Job was successfully created.' }
+        format.json { render json: @job }
+      end
+       
     else
-      render :new
+       respond_to do |format| 
+        format.html {render :home_path}
+        format.json { render json: @job.errors.full_messages, status: :unprocessable_entity }
+      end
     end
   end
 
