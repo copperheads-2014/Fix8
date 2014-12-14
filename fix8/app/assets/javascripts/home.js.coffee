@@ -2,4 +2,4 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$('#add_a_job_link').show("#add_a_job_form")  
+$('#add_a_job_link').toggle("#add_a_job_form")  
