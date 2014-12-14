@@ -5,6 +5,9 @@ class HomeController < ApplicationController
     if contractor?
       @my_jobs = @user.jobs_i_can_bid_on
       # @open_jobs = Job.all - User.
+      elsif landlord?
+        @job = Job.new
+        @properties = @user.properties
     end
   end
 
