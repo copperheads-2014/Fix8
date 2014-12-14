@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @skills = Skill.all if contractor?
   end
 
   def create
@@ -53,6 +53,18 @@ class UsersController < ApplicationController
 
   def viewed_user
     @viewed_user = User.find(params[:id])
+  end
+
+  def contractor?
+    @user.user_type == 'contractor'
+  end
+
+  def skills_options
+    options = []
+    Skill.all.each do |skill|
+      options << [skill, skill]
+    end
+    options
   end
 
 end

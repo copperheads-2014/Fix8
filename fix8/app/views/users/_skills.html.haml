@@ -1,0 +1,7 @@
+= form_for :user_skill, { url: "user_skills", method: "post" }  do |f|
+  %ul
+    -@skills.each do |skill|
+      %li
+        =f.label skill.name
+        =f.check_box skill.name, skill.id, @user.skills.include?(skill), name: 'words'#, "",{},"yes","no") #{method: @user.skills.include?(skill)}
+    =f.submit "Update skills"
