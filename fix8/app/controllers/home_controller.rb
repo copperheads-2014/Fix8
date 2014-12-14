@@ -9,6 +9,13 @@ class HomeController < ApplicationController
         @job = Job.new
         @properties = @user.properties
     end
+    if landlord?
+      @pending_jobs = []
+      @user.jobs.each do |job|
+        @pending_jobs << job unless job.accepted_bid?
+      end
+      @pending_jobs
+    end
   end
 
   private

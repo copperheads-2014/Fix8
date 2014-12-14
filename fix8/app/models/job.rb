@@ -15,4 +15,8 @@ class Job < ActiveRecord::Base
     property.landlord
   end
 
+  def accepted_bid?
+    self.bids.where(accepted: true).count >= 1
+  end
+
 end
