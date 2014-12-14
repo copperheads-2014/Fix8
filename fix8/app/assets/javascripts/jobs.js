@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 
 
-  $('.accept-bid').on('click', function(e) {
+  $('.header').on('click', '.accept-bid', function(e) {
     e.preventDefault();
     bid_id = $(this).parent().attr("bid_id");
     console.log('hi!');

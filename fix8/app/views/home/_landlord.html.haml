@@ -1,6 +1,6 @@
 %div
   %ul
-    - @user.jobs.each do |job|
+    - @pending_jobs.each do |job|
       %li= link_to job.title, job
   = link_to 'Add a Job', new_job_path, id: "add_a_job_link"
 
