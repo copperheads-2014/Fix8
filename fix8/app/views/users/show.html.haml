@@ -2,3 +2,11 @@
 = @user.name
 %p= @user.address
 %p= @user.phone_number
+%ul
+  Received Reviews
+  -@user.received_reviews.each do |review|
+    %li
+      Rating
+      =review.rating
+      Comments
+      =review.description
