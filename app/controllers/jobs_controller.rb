@@ -13,6 +13,7 @@ class JobsController < ApplicationController
     #@properties = Property.all
     respond_to do |format|
       if @job.save
+        add_job_skills
         format.html { redirect_to home_path, notice: 'Job was successfully created.' }
         format.json { render json: @job }
       else
