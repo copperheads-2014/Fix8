@@ -1,3 +1,11 @@
 %h1 Create New Account
-= render partial: 'form'
+= form_for :user, :url => '/users', :action => 'create' do |f|
+  %fieldset
+    %legend Are you a
+    = render partial: 'user_types'
+  %fieldset
+    %legend Personal Information
+    = render partial: 'form'
+    = render partial: 'password_fields'
+  = submit_tag "Create Account"
 / %p Find me in app/views/user/new.html.haml
