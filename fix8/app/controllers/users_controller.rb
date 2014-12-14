@@ -27,6 +27,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    if @user.update(update_params)
+      redirect_to edit_user_path
+    else
+      redirect_to home_path
+    end
+  end
+
   def show
   end
 
