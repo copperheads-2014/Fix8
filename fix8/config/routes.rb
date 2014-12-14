@@ -14,10 +14,13 @@ Rails.application.routes.draw do
   post 'properties/create'
 
   post 'bids/accept' => 'bids#accept'
+  post 'userskills' => 'userskills#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  resources :users, only: [:create, :new, :show, :edit, :update]
+  resources :users, only: [:create, :new, :show, :edit, :update] do
+    resources :user_skills, only: [:create, :update]
+  end
 
   resources :jobs do
     resources :bids, only: [:create, :new] do
