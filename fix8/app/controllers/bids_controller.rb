@@ -12,7 +12,11 @@ class BidsController < ApplicationController
     else
       render :new
     end
+  end
 
+  def accept
+    binding.pry
+    @bid = Bid.find(params[:bid_id])
   end
 
   private
