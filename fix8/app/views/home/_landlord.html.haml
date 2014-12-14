@@ -2,7 +2,7 @@
   %ul
     - @user.jobs.each do |job|
       %li= link_to job.title, job
-  = link_to 'Add a Job', new_job_path
+  = link_to 'Add a Job', new_job_path, id: "add_a_job_link"
 
 #add_a_job_form
   = render partial: 'jobs/form'
