@@ -1,12 +1,18 @@
 class UsersController < ApplicationController
   skip_before_action :require_login
+  # Take note that there is a before action in the Application Controller that will set @user to equal the authenticated user.  For the edit and show route we want to be clear about who we are referring to.
+  # Thus
+  # @user == user that is currently logged in
+  # @viewed_user == user from the URL
+  before_action :viewed_user, only: [:edit, :show]
+  before_action :allowed, only: [:edit]
 
   def new
     @user = User.new
   end
 
-  def show
-    @user = User.find(params[:id])
+  def edit
+
   end
 
   def create
@@ -21,10 +27,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+  end
+
+
   private
+
+  def allowed
+    unless @user == @viewed_user
+      redirect_to home_path
+    end
+  end
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :user_type, :address, :name, :phone_number)
+  end
+
+  def viewed_user
+    @viewed_user = User.find(params[:id])
   end
 
 end
