@@ -19,6 +19,9 @@
       = f.label :description, "Job Description"
       = f.text_area(:description, columns: 30, rows: 2, class: "form-control")
     %li
+      Skills needed for this job
+      = render partial: 'jobs/skills'
+    %li
       = f.label :start_date, "Start Date"
       = f.date_select :start_date, placeholder: "12/10/2014", id: "start_date"
     %li
