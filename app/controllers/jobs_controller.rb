@@ -42,5 +42,15 @@ class JobsController < ApplicationController
     @skills = Skill.all
   end
 
+  def add_job_skills
+    @skills.each do |skill|
+      @job.skills << skill if selected_skill?(skill.name)
+    end
+  end
+
+  def selected_skill?(skill)
+    params[:user_skill][skill] == "1"
+  end
+
 
 end
