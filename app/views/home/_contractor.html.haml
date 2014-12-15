@@ -1,21 +1,24 @@
 =render partial: 'no_skills' if @user.skills.length == 0
-%div
-  %ul
-    My open bids
-    - @my_jobs.each do |job|
-      %li= link_to job.title, job
-  Jobs I can bid on
-  %ul
-    -@user.skills.each do |skill|
-      %li
-        =skill.name
-        %ul
-          - (skill.available_jobs - @my_jobs).each do |job|
-            %li
-              = link_to job.title, job
-
-  %h2 Completed Jobs
-  %ul
+%div#main-container.container-fluid
+  %div#row
+    %div#sidebar.col-xs-4
+      %h2 My open bids
+      %ul
+        - @my_jobs.each do |job|
+          %li= link_to job.title, job
+    %div#sidebar.col-xs-4
+      %h2 Jobs I can bid on
+      %ul
+        -@user.skills.each do |skill|
+          %li
+            =skill.name
+            %ul
+              - (skill.available_jobs - @my_jobs).each do |job|
+                %li
+                  = link_to job.title, job
+    %div#sidebar.col-xs-4
+      %h2 Completed Jobs
+      %ul
 
 
 
