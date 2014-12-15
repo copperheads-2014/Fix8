@@ -1,4 +1,5 @@
-$(document).ready(function() {
+var ready;
+ready = (function() {
   var bid_id
   console.log("ready!");
 
@@ -27,3 +28,6 @@ $(document).ready(function() {
   });
 
 });
+
+$(document).ready(ready);
+$(document).on('page:load', ready)
