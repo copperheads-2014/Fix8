@@ -1,12 +1,14 @@
 %div
   %h2 Open Jobs
   %ul
-    - @pending_jobs.each do |job|
+    - @lord_pending_jobs.each do |job|
       %li= link_to job.title, job
   %h2 Completed Jobs
   %ul
-    - @completed_jobs.each do |completed_job|
-      %li= link_to completed_job.title, completed_job
+    - @lord_completed_jobs.each do |completed_job|
+      %li
+        = link_to completed_job.title, completed_job
+        = link_to 'Add a Review', new_job_bid_review_path(completed_job, completed_job.find_accepted_bid)
   %h2 My properties
   %ul
     - @properties.each do |property|

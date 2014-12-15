@@ -10,8 +10,8 @@ class HomeController < ApplicationController
         @properties = @user.properties
     end
     if landlord?
-      pending_jobs
-      completed_jobs
+      lord_pending_jobs
+      lord_completed_jobs
       my_properties
     end
   end
@@ -30,17 +30,17 @@ class HomeController < ApplicationController
     @user.user_type == 'contractor'
   end
 
-  def completed_jobs
-    @completed_jobs = []
+  def lord_completed_jobs
+    @lord_completed_jobs = []
     @user.jobs.each do |job|
-      @completed_jobs << job if job.accepted_bid?
+      @lord_completed_jobs << job if job.accepted_bid?
     end
   end
 
-  def pending_jobs
-    @pending_jobs = []
+  def lord_pending_jobs
+    @lord_pending_jobs = []
     @user.jobs.each do |job|
-      @pending_jobs << job unless job.accepted_bid?
+      @lord_pending_jobs << job unless job.accepted_bid?
     end
   end
 
