@@ -1,5 +1,6 @@
 class Job < ActiveRecord::Base
   has_many    :bids
+  has_many    :reviews, through: :bids
   has_many    :job_skills
   has_many    :skills, through: :job_skills
   belongs_to  :property
@@ -8,10 +9,15 @@ class Job < ActiveRecord::Base
   validates :description, presence: true
 
   validates :start_date, :end_date, presence: true
-  validate :end_is_after_start, :start_after_today, :bidding_ends_before_start
+  validate  :end_is_after_start, :start_after_today, :bidding_ends_before_start
+  validate  :two_reviews_max
 
   def end_is_after_start
     errors.add(:end_date, "must come after start date") if self.end_date < self.start_date
+  end
+
+  def two_reviews_max
+    errors.add(:reviews, "cannot have more than two reviews") if self.reviews.count >= 2
   end
 
   def start_after_today
@@ -19,7 +25,7 @@ class Job < ActiveRecord::Base
   end
 
   def bidding_ends_before_start
-    errors.add(:bid_length, "must end before start date of job") if Time.now + self.bid_length.day > self.start_date
+    errors.add(:bid_length, "must end before start date of job") if Time.now + self.bid_length.day >= self.start_date + 1.day
   end
 
   def recent_bids

@@ -17,4 +17,5 @@ class Bid < ActiveRecord::Base
   def bidder_is_contractor
     errors.add(:contractor_id, "must be an user that is a contractor") if self.contractor.user_type == 1
   end
+
 end

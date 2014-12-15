@@ -9,6 +9,8 @@
       %li
         = link_to completed_job.title, completed_job
         = link_to 'Add a Review', new_job_bid_review_path(completed_job, completed_job.find_accepted_bid)
+        - if completed_job.reviews.count == 0
+          You need to add a review!
   %h2 My properties
   %ul
     - @properties.each do |property|
