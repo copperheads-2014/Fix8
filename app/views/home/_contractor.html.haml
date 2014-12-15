@@ -3,9 +3,10 @@
   %div#row
     %div#sidebar.col-xs-4
       %h2 My open bids
-      %ul
+      %table.table.table-hover.table-bordered
         - @my_jobs.each do |job|
-          %li= link_to job.title, job
+          %tr
+            %td= link_to job.title, job
     %div#sidebar.col-xs-4
       %h2 Jobs I can bid on
       %ul
