@@ -25,4 +25,12 @@
 
       %li
         = link_to "Support", '#'
+      - if @user
+        %li
+          /= link_to "Sign Out", sessions_destroy_path, method: :delete
+          = link_to "Sign Out", sessions_destroy_path, :method => :destroy
+
+      - else
+        %li
+          = link_to "Sign In", root_path
 
