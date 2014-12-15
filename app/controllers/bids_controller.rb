@@ -7,6 +7,7 @@ class BidsController < ApplicationController
     @bid = Bid.new(bid_params)
     @bid.contractor_id = @user.id
     @bid.job_id = params[:job_id]
+    @bid.accepted = false
     if @bid.save
       redirect_to home_path
     else
