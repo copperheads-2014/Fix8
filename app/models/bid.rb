@@ -7,10 +7,14 @@ class Bid < ActiveRecord::Base
   validates :job_id, presence: true
   validates :price, presence: true, numericality: true
 
-  before_validation :less_than_max_bid
+  before_validation :less_than_max_bid, :bidder_is_contractor
 
 
   def less_than_max_bid
     self.job.max_bid > self.price
+  end
+
+  def bidder_is_contractor
+    self.contractor.user_type == 'contractor'
   end
 end
