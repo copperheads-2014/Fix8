@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def received_reviews
-    if self.user_type == 0
+    if self.user_type == 'landlord'
       self.reviews_from_contractors.for_landlord
     else
       self.reviews_from_landlords.for_contractor
