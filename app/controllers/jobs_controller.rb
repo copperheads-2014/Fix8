@@ -3,7 +3,6 @@ class JobsController < ApplicationController
   before_action :set_skills, only: [:new, :create]
   def new
     @job = Job.new
-    @properties = @user.properties
   end
 
   def create
