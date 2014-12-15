@@ -27,4 +27,5 @@
       = number_to_currency(bid.price)
       = bid.created_at
 
-= link_to "Place a new bid on this", new_job_bid_path(@job)
+- unless @job.accepted_bid?
+  = link_to "Place a new bid on this", new_job_bid_path(@job)
