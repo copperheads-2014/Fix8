@@ -7,6 +7,12 @@
   %ul
     - @completed_jobs.each do |completed_job|
       %li= link_to completed_job.title, completed_job
+  %h2 My properties
+  %ul
+    - @properties.each do |property|
+      %li
+        = property.name
+        = property.address
   = link_to 'Add a Job', new_job_path, id: "add_a_job_link"
 
 

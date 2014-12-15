@@ -12,6 +12,7 @@ class HomeController < ApplicationController
     if landlord?
       pending_jobs
       completed_jobs
+      my_properties
     end
   end
 
@@ -43,7 +44,13 @@ class HomeController < ApplicationController
     end
   end
 
+
   def set_skills
     @skills = Skill.all
   end
+
+  def my_properties
+    @properties = @user.properties
+  end
+
 end
