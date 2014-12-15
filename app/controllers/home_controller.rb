@@ -12,6 +12,7 @@ class HomeController < ApplicationController
     if landlord?
       pending_jobs
       completed_jobs
+      my_properties
     end
   end
 
@@ -41,6 +42,10 @@ class HomeController < ApplicationController
     @user.jobs.each do |job|
       @pending_jobs << job unless job.accepted_bid?
     end
+  end
+
+  def my_properties
+    @properties = @user.properties
   end
 
 end
