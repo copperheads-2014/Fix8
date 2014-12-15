@@ -44,7 +44,6 @@ class HomeController < ApplicationController
     end
   end
 
-
   def set_skills
     @skills = Skill.all
   end
