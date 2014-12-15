@@ -8,7 +8,6 @@ class HomeController < ApplicationController
   def index
     if contractor?
       @my_jobs = @user.jobs_i_bid_on
-      # @open_jobs = Job.all - User.
       elsif landlord?
         @job = Job.new
         @properties = @user.properties
