@@ -19,8 +19,10 @@
               %td You need to add a review!
     %div#sidebar.col-xs-4
       %h2 My properties
-      %ul
-        - @properties.each do |property|
-          %li
-            = property.name
-            = property.address
+      %table.table.table-hover.table-bordered
+        - @properties.order(:name).each do |property|
+          %tr
+            %td
+              = property.name
+            %td
+              = property.address
