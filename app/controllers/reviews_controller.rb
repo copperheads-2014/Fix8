@@ -42,7 +42,7 @@ class ReviewsController < ApplicationController
     if @user.user_type == 'landlord'
       bid.contractor
     else
-      bid.property.landlord
+      bid.job.landlord
     end
   end
 end
