@@ -1,8 +1,15 @@
-%h1 LOGIN
-= form_for :sessions, :url => {:controller => 'sessions', :action => 'create'} do |f|
-  = label_tag :email, "Email"
-  = text_field :sessions, "email"
-  = label_tag :password
-  = password_field :sessions, "password"
-  = submit_tag "Login"
-= link_to "Create new account", new_user_path
+%div.sign-in
+  = form_for :sessions, :url => {:controller => 'sessions', :action => 'create'}, html: {class: "form-horizontal", role: "form"} do |f|
+    %div.form-group
+      = label_tag :email, "Email", class: "col-sm-2 control-label"
+      %div.col-sm-4
+        = text_field :sessions, "email", class: "form-control"
+    %div.form-group
+      = label_tag :password, "Password", class: "col-sm-2 control-label"
+      %div.col-sm-4
+        = password_field :sessions, "password", class: "form-control"
+    %div.form-group
+      %div.col-sm-offset-2.col-sm-10
+        = submit_tag "Login", class: "btn btn-default"
+        %button.btn.btn-default
+          =link_to "Create new account", new_user_path

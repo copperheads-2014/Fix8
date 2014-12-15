@@ -1,11 +1,11 @@
-%h1 Create New Account
-= form_for :user, :url => '/users', :action => 'create' do |f|
+= form_for :user, :url => '/users', :action => 'create', html: {class: "form-horizontal", role: "form"}  do |f|
   %fieldset
-    %legend Are you a
-    = render partial: 'user_types'
-  %fieldset
-    %legend Personal Information
-    = render partial: 'form'
-    = render partial: 'password_fields'
-  = submit_tag "Create Account"
+    %legend
+      Are you a
+      = render partial: 'user_types'
+  = render partial: 'form'
+  = render partial: 'password_fields'
+  %div.form-group
+    %div.col-sm-offset-2.col-sm-10
+      =submit_tag "Create Account", class: "btn btn-default"
 / %p Find me in app/views/user/new.html.haml

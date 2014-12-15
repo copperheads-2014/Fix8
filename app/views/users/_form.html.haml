@@ -1,10 +1,18 @@
-= label_tag :name, "Name"
-= text_field :user, "name"
-= label_tag :address
-= text_field :user, "address"
-= label_tag :phone
-= text_field :user, "phone_number"
-= label_tag :email, "Email"
-= text_field :user, "email"
+%div.form-group
+  = label_tag :name, "Name", class: "col-sm-2 control-label"
+  %div.col-sm-4
+    = text_field :user, "name", class: "form-control"
+%div.form-group
+  = label_tag :address, "Address", class: "col-sm-2 control-label"
+  %div.col-sm-4
+    = text_field :user, "address", class: "form-control"
+%div.form-group
+  = label_tag :phone, "Phone", class: "col-sm-2 control-label"
+  %div.col-sm-4
+    = text_field :user, "phone_number", class: "form-control"
+%div.form-group
+  = label_tag :email, "Email", class: "col-sm-2 control-label"
+  %div.col-sm-4
+    = text_field :user, "email", class: "form-control"
 
 
