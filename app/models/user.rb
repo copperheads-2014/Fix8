@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   validates :address, presence: true
   validates :phone_number, presence: true
   validates :name, presence: true
+  validates :user_type, presence: true
+
   enum user_type: [ :landlord, :contractor ]
 
   def jobs_i_bid_on
