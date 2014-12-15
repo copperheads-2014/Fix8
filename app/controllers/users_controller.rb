@@ -6,12 +6,12 @@ class UsersController < ApplicationController
   # @viewed_user == user from the URL
   before_action :viewed_user, only: [:edit, :show]
   before_action :allowed, only: [:edit]
+  before_action :set_skills, only: [:edit]
 
   def new
   end
 
   def edit
-    @skills = Skill.all if contractor?
   end
 
   def create
@@ -58,12 +58,8 @@ class UsersController < ApplicationController
     @user.user_type == 'contractor'
   end
 
-  def skills_options
-    options = []
-    Skill.all.each do |skill|
-      options << [skill, skill]
-    end
-    options
+  def set_skills
+    @skills = Skill.all
   end
 
 end

@@ -13,6 +13,5 @@
       = bid.contractor.name
       = number_to_currency(bid.price)
       = bid.created_at
-      / %input{type:"hidden", value: bid.id, name: :bid_id}
       %button.accept-bid
         Accept Bid

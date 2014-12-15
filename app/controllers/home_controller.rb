@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :set_user
+  before_action :set_user, :set_skills
 
   def index
     if contractor?
@@ -43,4 +43,7 @@ class HomeController < ApplicationController
     end
   end
 
+  def set_skills
+    @skills = Skill.all
+  end
 end

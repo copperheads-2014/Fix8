@@ -1,0 +1,6 @@
+= fields_for :user_skill do |skill_field|
+  %ul
+    -@skills.each do |skill|
+      %li
+        =skill_field.label skill.name
+        =skill_field.check_box skill.name
