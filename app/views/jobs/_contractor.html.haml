@@ -29,3 +29,13 @@
 
 - unless @job.accepted_bid?
   = link_to "Place a new bid on this", new_job_bid_path(@job)
+
+- if @job.accepted_bid?
+  %h3 This job has been completed.
+  %h4
+    - if !@job.find_accepted_bid.reviews.where(review_for: 1).empty?
+      How did the contractor do?
+      = @job.find_accepted_bid.reviews.where(review_for: 1)[0].description
+    - if !@job.find_accepted_bid.reviews.where(review_for: 0).empty?
+      How was it working for the landlord?
+      = @job.find_accepted_bid.reviews.where(review_for: 0)[0].description
