@@ -5,12 +5,21 @@ class Job < ActiveRecord::Base
   belongs_to  :property
   validates :title, presence: true
   validates :max_bid, presence: true
+  validates :description, presence: true
 
   validates :start_date, :end_date, presence: true
-  validate :end_is_after_start
+  validate :end_is_after_start, :start_after_today, :bidding_ends_before_start
 
   def end_is_after_start
     errors.add(:end_date, "must come after start date") if self.end_date < self.start_date
+  end
+
+  def start_after_today
+    errors.add(:start_date, "must be a future date") if self.start_date < Time.now
+  end
+
+  def bidding_ends_before_start
+    errors.add(:bid_length, "must end before start date of job") if Time.now + self.bid_length.day > self.start_date
   end
 
   def recent_bids
