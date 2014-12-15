@@ -17,7 +17,7 @@ class JobsController < ApplicationController
         format.html { redirect_to home_path, notice: 'Job was successfully created.' }
         format.json { render json: @job }
       else
-        format.html {render :home_path}
+        format.html {render :new }
         format.json { render json: @job.errors.full_messages, status: :unprocessable_entity }
       end
     end
