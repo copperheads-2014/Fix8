@@ -1,8 +1,23 @@
 %h1 You're a contractor
+%h1
+  = @job.title
 
 %div
   = @job.description
+  %p
+    Max bid
+    =number_to_currency(@job.max_bid)
+  %p
+    Bidding ends
+    =(@job.created_at + @job.bid_length)
+  %p
+    Job Time frame
+    =@job.start_date
+    to
+    =@job.end_date
+
 %div
+
   = link_to @job.landlord.name, @job.landlord
 %ul
   Bids on this job
