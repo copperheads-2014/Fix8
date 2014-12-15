@@ -10,7 +10,7 @@
       %li
         =skill.name
         %ul
-          - @my_jobs.each do |job|
+          - (skill.available_jobs - @my_jobs).each do |job|
             %li
               = link_to job.title, job
 
