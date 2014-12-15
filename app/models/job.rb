@@ -19,6 +19,10 @@ class Job < ActiveRecord::Base
     self.bids.where(accepted: true).count >= 1
   end
 
+  def find_accepted_bid
+    self.bids.where(accepted:true)[0]
+  end
+
   def expired?
     Time.now > self.created_at + self.bid_length.day
   end

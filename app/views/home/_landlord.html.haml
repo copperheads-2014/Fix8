@@ -6,7 +6,9 @@
   %h2 Completed Jobs
   %ul
     - @completed_jobs.each do |completed_job|
-      %li= link_to completed_job.title, completed_job
+      %li
+        = link_to completed_job.title, completed_job
+        = link_to 'Add a Review', new_job_bid_review_path(completed_job, completed_job.find_accepted_bid)
   %h2 My properties
   %ul
     - @properties.each do |property|
