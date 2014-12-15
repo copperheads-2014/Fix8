@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   before_action :set_skills, only: [:edit]
 
   def new
+    @user = User.new
   end
 
   def edit
