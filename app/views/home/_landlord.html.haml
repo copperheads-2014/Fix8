@@ -14,9 +14,10 @@
         - @lord_completed_jobs.each do |completed_job|
           %tr
             %td=link_to completed_job.title, completed_job
-            %td=link_to 'Add a Review', new_job_bid_review_path(completed_job, completed_job.find_accepted_bid)
-            - if completed_job.reviews.count == 0
-              %td You need to add a review!
+            - if completed_job.reviews.where(review_for: 1).empty?
+              %td=link_to 'Add a Review', new_job_bid_review_path(completed_job, completed_job.find_accepted_bid)
+              - if completed_job.reviews.count == 0
+                %td You need to add a review!
     %div#sidebar.col-xs-4
       %h2 My properties
       %ul

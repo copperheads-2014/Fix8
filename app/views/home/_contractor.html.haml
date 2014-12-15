@@ -4,7 +4,7 @@
     %div#sidebar.col-xs-4
       %h2 My open bids
       %table.table.table-hover.table-bordered
-        - @my_jobs.each do |job|
+        - @my_open_jobs.each do |job|
           %tr
             %td= link_to job.title, job
     %div#sidebar.col-xs-4
@@ -19,7 +19,12 @@
                   = link_to job.title, job
     %div#sidebar.col-xs-4
       %h2 Completed Jobs
-      %ul
+      %table.table.table-hover.table-bordered
+        - @my_completed_jobs.each do |job|
+          %tr
+            %td= link_to job.title, job
+
+
 
 
 

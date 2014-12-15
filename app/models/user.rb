@@ -19,9 +19,19 @@ class User < ActiveRecord::Base
 
   enum user_type: [ :landlord, :contractor ]
 
-  def jobs_i_bid_on
+  def all_jobs_i_bid_on
     job_ids = bids.pluck(:job_id).uniq
     job_ids.map { |job_id| Job.find(job_id) }
+  end
+
+  def open_jobs_i_bid_on
+    open_bids = self.bids.reject { |bid| bid.accepted == true }
+    open_bids.map { |bid| Job.find(bid.job.id) }
+  end
+
+  def cont_closed_jobs
+    accepted_bids = self.bids.select { |bid| bid.accepted == true }
+    accepted_bids.map { |bid| Job.find(bid.job.id) }
   end
 
   def jobs_i_can_bid_on
