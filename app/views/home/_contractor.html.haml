@@ -4,10 +4,14 @@
     My open bids
     - @user.jobs_i_bid_on.each do |job|
       %li= link_to job.title, job
+  Jobs I can bid on
   %ul
-    Jobs I can bid on
-    - @my_jobs.each do |job|
+    -@user.skills.each do |skill|
       %li
-        = link_to job.title, job
+        =skill.name
+        %ul
+          - @my_jobs.each do |job|
+            %li
+              = link_to job.title, job
 
 
