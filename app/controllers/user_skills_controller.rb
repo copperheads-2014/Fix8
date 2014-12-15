@@ -1,9 +1,9 @@
-class UserSkillsController < ApplicationController
+ class UserSkillsController < ApplicationController
 
   def create
     add_skills
     remove_skills
-    redirect_to edit_user_path(@user)
+    redirect_to home_path
   end
 
   private

@@ -27,10 +27,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(update_params)
-      redirect_to edit_user_path
-    else
+    if @user.update(user_params)
       redirect_to home_path
+    else
+      redirect_to edit_user_path
     end
   end
 
