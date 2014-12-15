@@ -1,25 +1,24 @@
-%div
-  %h2 Open Jobs
-  %ul
-    - @lord_pending_jobs.each do |job|
-      %li= link_to job.title, job
-  %h2 Completed Jobs
-  %ul
-    - @lord_completed_jobs.each do |completed_job|
-      %li
-        = link_to completed_job.title, completed_job
-        = link_to 'Add a Review', new_job_bid_review_path(completed_job, completed_job.find_accepted_bid)
-        - if completed_job.reviews.count == 0
-          You need to add a review!
-  %h2 My properties
-  %ul
-    - @properties.each do |property|
-      %li
-        = property.name
-        = property.address
-  = link_to 'Add a Job', new_job_path, id: "add_a_job_link"
-
-
-%div
-  #add_a_job_form
-    = render partial: 'jobs/form', locals: {doajax: true}
+%div#main-container.container-fluid
+  %div#row
+    %div#sidebar.col-xs-4
+      %h2 Open Jobs
+      %ul
+        - @lord_pending_jobs.each do |job|
+          %li= link_to job.title, job
+      = link_to 'Add a Job', new_job_path, id: "add_a_job_link"
+    %div#sidebar.col-xs-4
+      %h2 Completed Jobs
+      %ul
+        - @lord_completed_jobs.each do |completed_job|
+          %li
+            = link_to completed_job.title, completed_job
+            = link_to 'Add a Review', new_job_bid_review_path(completed_job, completed_job.find_accepted_bid)
+            - if completed_job.reviews.count == 0
+              You need to add a review!
+    %div#sidebar.col-xs-4
+      %h2 My properties
+      %ul
+        - @properties.each do |property|
+          %li
+            = property.name
+            = property.address
