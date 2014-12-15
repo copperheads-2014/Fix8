@@ -6,6 +6,11 @@ class Job < ActiveRecord::Base
 
 
   validates :start_date, :end_date, presence: true
+  validate :end_is_after_start
+
+  def end_is_after_start
+    errors.add(:end_date, "must come after start date") if self.end_date < self.start_date
+  end
 
   def recent_bids
     bids.order(created_at: :desc)
