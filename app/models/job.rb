@@ -3,7 +3,8 @@ class Job < ActiveRecord::Base
   has_many    :job_skills
   has_many    :skills, through: :job_skills
   belongs_to  :property
-
+  validates :title, presence: true
+  validates :max_bid, presence: true
 
   validates :start_date, :end_date, presence: true
   validate :end_is_after_start
