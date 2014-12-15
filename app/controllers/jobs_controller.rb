@@ -11,7 +11,7 @@ class JobsController < ApplicationController
     #@job.property_id = params[:property_id]
     #@properties = Property.all
     respond_to do |format|
-      if @job.save
+      if at_least_one_skill_selected? && @job.save
         add_job_skills
         format.html { redirect_to home_path, notice: 'Job was successfully created.' }
         format.json { render json: @job }
@@ -52,5 +52,11 @@ class JobsController < ApplicationController
     params[:user_skill][skill] == "1"
   end
 
+  def at_least_one_skill_selected?
+    count = @skills.select {|skill| selected_skill?(skill.name)}.length
+    return true if count > 0
+    @job.errors.add(:description, "Error: At least one skill must be selected")
+    false
+  end
 
 end
