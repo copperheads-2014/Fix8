@@ -2,24 +2,26 @@
 %div#main-container.container-fluid
   %div#row
     %div#sidebar.col-xs-4
-      %h2 My open bids
+      %h2 My Bids
       %table.table.table-hover.table-bordered
         - @my_jobs.each do |job|
           %tr
             %td= link_to job.title, job
     %div#sidebar.col-xs-4
-      %h2 Jobs I can bid on
-      %ul
+      %h2 Available Jobs
+      %table.table.table-hover.table-striped
         -@user.skills.each do |skill|
-          %li
-            =skill.name
-            %ul
-              - (skill.available_jobs - @my_jobs).each do |job|
-                %li
-                  = link_to job.title, job
+          %tr
+            %td.info
+              =skill.name
+          - (skill.available_jobs - @my_jobs).each do |job|
+            %tr
+            %td.col-xs-4
+              %td.col-xs-8
+                = link_to job.title, job
     %div#sidebar.col-xs-4
       %h2 Completed Jobs
-      %ul
+      %table.table.table-hover.table-striped
 
 
 
