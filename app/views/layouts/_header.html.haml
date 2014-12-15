@@ -17,7 +17,7 @@
       %li
         =link_to "Home", root_path
 
-      - if @user
+      - if current_user
         %li
           = link_to "Edit Profile", edit_user_path(@user)
 
