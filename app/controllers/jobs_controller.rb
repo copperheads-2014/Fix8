@@ -7,9 +7,6 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-
-    #@job.property_id = params[:property_id]
-    #@properties = Property.all
     respond_to do |format|
       if at_least_one_skill_selected? && @job.save
         add_job_skills
