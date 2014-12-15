@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
   before_action :set_user, :set_skills
 
+  def about
+
+  end
+
   def index
     if contractor?
       @my_jobs = @user.jobs_i_bid_on

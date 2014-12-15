@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get 'home' => 'home#index'
 
+  get 'about' => 'home#about'
+  get 'faq' => 'home#faq'
+
   get 'sessions/new'
 
   post 'sessions' => 'sessions#create'
