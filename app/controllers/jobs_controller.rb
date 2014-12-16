@@ -20,7 +20,10 @@ class JobsController < ApplicationController
   end
 
   def index
-    @jobs = Job.all
+    expires_in 5.minutes
+    @jobs = Rails.cache.fetch(:jobs) do
+      Job.all
+    end
   end
 
   def show
