@@ -34,4 +34,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Use dalli for memcaching. Usually used in production only.
+  config.cache_store = :dalli_store, {compress: true}
+
 end
