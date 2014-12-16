@@ -54,6 +54,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    dalli (2.7.2)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     erb2haml (0.1.5)
@@ -188,6 +189,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.1)
   capybara
   coffee-rails (~> 4.0.0)
+  dalli
   erb2haml
   faker
   font-awesome-rails
