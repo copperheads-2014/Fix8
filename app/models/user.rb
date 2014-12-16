@@ -19,9 +19,17 @@ class User < ActiveRecord::Base
 
   enum user_type: [ :landlord, :contractor ]
 
+  def completed_cached
+    Rails.cache.fetch("closed") { cont_closed_jobs, expires_in: 500  }
+  end
+
   def all_jobs_i_bid_on
     job_ids = bids.pluck(:job_id).uniq
     job_ids.map { |job_id| Job.find(job_id) }
+  end
+
+  def open_jobs_i_bid_on_cached
+    Rails.cache.fetch("open") {open_jobs_i_bid_on}
   end
 
   def open_jobs_i_bid_on
