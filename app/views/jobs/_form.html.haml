@@ -6,35 +6,36 @@
       %li
         = msg
 - doajax = false unless (defined? doajax)
-= form_for @job, remote: doajax do |f|
-  %ul
-    %li
-      = f.collection_select :property_id, @user.properties.order(:name), :id, :name,   {prompt: "What property is this job for?"}, {class:"form-control input-sm "}
+%div.container
+  = form_for @job, remote: doajax do |f|
+    %ul#job-form
+      %li
+        = f.collection_select :property_id, @user.properties.order(:name), :id, :name,   {prompt: "What property is this job for?"}, {class:"form-control input-sm "}
 
-    = link_to "Add a property", properties_new_path#,  :target => "_blank"
-    %li
-      = f.label :title, "Job Title"
-      = f.text_field :title, :placeholder => "Fix the sink"
-    %li
-      = f.label :description, "Job Description"
-      = f.text_area(:description, columns: 30, rows: 2, class: "form-control")
-    %li
-      Skills needed for this job
-      = render partial: 'jobs/skills'
-    %li
-      = f.label :start_date, "Start Date"
-      = f.date_select :start_date, placeholder: "12/10/2014", id: "start_date"
-    %li
-      = f.label :end_date, "End Date"
-      = f.date_select :end_date, :placeholder => "12/10/2014", id: "end_date"
-    %li
-      = f.label :max_bid, "Max Bid"
-      = f.text_field :max_bid, id: "max_bid"
-    %li
-      = f.label :bid_length
-      = f.select(:bid_length, options_for_select([['1 Day', 1], ['2 Days', 2], ['3 Days', 3], ['4 Days', 4], ['5 Days', 5], ['6 Days', 6], ['7 Days', 7], ['8 Days', 8]]))
-    %li
-      = f.submit "Create Job"
+      = link_to "Add a property", properties_new_path#,  :target => "_blank"
+      %li
+        = f.label :title, "Job Title"
+        = f.text_field :title, :placeholder => "Fix the sink", class: "form-control"
+      %li
+        = f.label :description, "Job Description"
+        = f.text_area(:description, columns: 30, rows: 2, class: "form-control")
+      %li
+        %h4 Skills needed for this job
+        = render partial: 'jobs/skills'
+      %li
+        = f.label :start_date, "Start Date"
+        = f.date_select :start_date, placeholder: "12/10/2014", id: "start_date"
+      %li
+        = f.label :end_date, "End Date"
+        = f.date_select :end_date, :placeholder => "12/10/2014", id: "end_date"
+      %li
+        = f.label :max_bid, "Max Bid"
+        = f.text_field :max_bid, id: "max_bid", class: "form-control"
+      %li
+        = f.label :bid_length
+        = f.select(:bid_length, options_for_select([['1 Day', 1], ['2 Days', 2], ['3 Days', 3], ['4 Days', 4], ['5 Days', 5], ['6 Days', 6], ['7 Days', 7], ['8 Days', 8]]))
+      %li
+        = f.submit "Create Job", class: "btn btn-primary"
 
 
 :javascript
