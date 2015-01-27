@@ -5,28 +5,46 @@
 %div
   = @job.description
   %p
-    Max bid
+    %b
+      Max bid:
     =number_to_currency(@job.max_bid)
   %p
-    Bidding ends
-    =(@job.created_at + @job.bid_length)
+    %b
+      Bidding ends:
+    =(@job.created_at + @job.bid_length).strftime("%B %d, %Y")
   %p
-    Job Time frame
-    =@job.start_date
+    %b
+      Job time frame:
+    =@job.start_date.strftime("%B %d, %Y")
     to
-    =@job.end_date
+    =@job.end_date.strftime("%B %d, %Y")
 %div
+  %b
+    Posted by:
   = link_to @job.landlord.name, @job.landlord
 - unless @job.accepted_bid?
-  %ul
-    Bids on this job
+  Bids on this job
+  %table.table.table-striped.table-hover
+    %tr
+      %th
+        Name
+      %th
+        Amount
+      %th
+        Placed
+      %th
+        Accept
     - @job.recent_bids.each do |bid|
-      %li{bid_id: bid.id}
-        = bid.contractor.name
-        = number_to_currency(bid.price)
-        = bid.created_at
-        %button.accept-bid
-          Accept Bid
+      %tr{bid_id: bid.id}
+        %td
+          = bid.contractor.name
+        %td
+          = number_to_currency(bid.price)
+        %td
+          = bid.created_at.strftime("%B %d, %Y")
+        %td
+          %button.accept-bid.btn.btn-default
+            Accept Bid
 - if @job.accepted_bid?
   %h3 This job has been completed.
   %h4
