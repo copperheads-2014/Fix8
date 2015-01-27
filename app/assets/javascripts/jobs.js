@@ -7,9 +7,9 @@ ready = (function() {
 
   $('.accept-bid').on('click', function(e) {
     e.preventDefault();
-    bid_id = $(this).parent().attr("bid_id");
+    bid_id = $(this).parent().parent().attr("bid_id");
     console.log('hi!');
-    var request
+    var request;
     request = $.ajax({
       url: "/bids/accept",
       type: "post",
