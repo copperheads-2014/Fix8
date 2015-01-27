@@ -1,12 +1,19 @@
-%h1 User
-= @viewed_user.name
-%p= @viewed_user.address
-%p= @viewed_user.phone_number
-%ul
+%h1
+  = @viewed_user.name
+.container
+  %p= @viewed_user.address
+  %p= @viewed_user.phone_number
   Received Reviews
-  -@viewed_user.received_reviews.each do |review|
-    %li
-      Rating
-      =review.rating
-      Comments
-      =review.description
+  %table.table.table-striped.table-hover.table-bordered
+    %tr
+      %th
+        Rating
+      %th
+        Comments
+    -@viewed_user.received_reviews.each do |review|
+      %tr
+        %td
+          -review.rating.times do
+            %span.glyphicon.glyphicon-star
+        %td
+          =review.description
