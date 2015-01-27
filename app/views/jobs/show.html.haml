@@ -1,3 +1,4 @@
 %h1
-= render partial: "landlordbids" if @user.user_type == 'landlord'
-= render partial: "contractor" if @user.user_type == 'contractor'
+.container
+  = render partial: "landlordbids" if @user.user_type == 'landlord'
+  = render partial: "contractor" if @user.user_type == 'contractor'
