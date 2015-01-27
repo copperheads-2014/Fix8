@@ -1,2 +1,11 @@
-%h3 New review
-= render partial: "form"
+%h1
+.container
+  %h3
+    Add a review for
+    -if @user.user_type == "contractor"
+      =@bid.job.landlord.name
+    -if @user.user_type == "landlord"
+      =@bid.contractor.name
+    in regards to
+    =@bid.job.title
+  = render partial: "form"
