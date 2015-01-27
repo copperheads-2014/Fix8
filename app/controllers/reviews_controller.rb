@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @bid = Bid.find(params[:bid_id])
   end
 
   def create
