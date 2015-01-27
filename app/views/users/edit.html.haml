@@ -1,6 +1,7 @@
-= form_for @user do |f|
-  =render partial: 'form'
-  = submit_tag "Update Personal Information"
-=render partial: 'skills'
+%div.container
+  = form_for @user do |f|
+    =render partial: 'form'
+    = submit_tag "Update Personal Information", class: "btn btn-primary"
+  =render partial: 'skills'
 
-= link_to "Back", :back
+  = link_to "Back", :back
