@@ -1,12 +1,13 @@
-- if @job.errors.any?
-  .alert.alert-danger.fade.in
-    %a.close{"data-dismiss" => "alert", :href => "#"} ×
-    %ul
-    - @job.errors.full_messages.each do |msg|
-      %li
-        = msg
-- doajax = false unless (defined? doajax)
 %div.container
+  %h1 Post a job
+  - if @job.errors.any?
+    .alert.alert-danger.fade.in
+      %a.close{"data-dismiss" => "alert", :href => "#"} ×
+      %ul
+      - @job.errors.full_messages.each do |msg|
+        %li
+          = msg
+  - doajax = false unless (defined? doajax)
   = form_for @job, remote: doajax do |f|
     %ul#job-form
       %li
