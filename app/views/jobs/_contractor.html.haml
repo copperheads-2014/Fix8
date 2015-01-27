@@ -1,31 +1,47 @@
-%h1 You're a contractor
 %h1
   = @job.title
 
 %div
-  = @job.description
   %p
-    Max bid
+    %b
+      Description:
+    %i
+      = @job.description
+  %p
+    %b
+      Max bid:
     =number_to_currency(@job.max_bid)
   %p
-    Bidding ends
-    =(@job.created_at + @job.bid_length)
+    %b
+      Bidding ends:
+    =(@job.created_at + @job.bid_length).strftime("%B %d, %Y")
   %p
-    Job Time frame
-    =@job.start_date
+    %b
+      Job Time frame:
+    =@job.start_date.strftime("%B %d, %Y")
     to
-    =@job.end_date
+    =@job.end_date.strftime("%B %d, %Y")
 
 %div
-  Posted by:
+  %b
+    Posted by:
   = link_to @job.landlord.name, @job.landlord
-%ul
-  Bids on this job
+%table.table.table-hover.table-bordered
+  %tr
+    %th
+      Name
+    %th
+      Amount
+    %th
+      Placed
   - @job.recent_bids.each do |bid|
-    %li
-      = bid.contractor.name
-      = number_to_currency(bid.price)
-      = bid.created_at
+    %tr
+      %td
+        = link_to bid.contractor.name, user_path(bid.contractor)
+      %td
+        = number_to_currency(bid.price)
+      %td
+        = bid.created_at.strftime("%B %d, %Y")
 
 - unless @job.accepted_bid?
   = link_to "Place a new bid on this", new_job_bid_path(@job)
