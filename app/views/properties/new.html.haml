@@ -1,17 +1,10 @@
 %h1 Add a Property
-= @user.name
-/ - if @property.errors.any?
-/   %div
-/     h2
-/     = pluralize(@property.errors.count, "error") prohibited this game from being saved:
-/
-/     %ul
-/       - @property.errors.full_messages.each do |message|
-/         %li = message
-
-= form_for :property, :url => {:controller => 'properties', :action => 'create'} do |f|
-  = label_tag :property_name, "Title", :class => 'title_label'
-  = text_field :property, "name"
-  = label_tag :property_address, "Address", :class => 'property_label'
-  = text_field :property, "address"
-  = submit_tag "submit"
+.container
+  = form_for :property, :url => {:controller => 'properties', :action => 'create'} do |f|
+    = label_tag :property_name, "Title", :class => 'title_label'
+    = text_field :property, "name", class: "form-group"
+    %div
+      = label_tag :property_address, "Address", :class => 'property_label'
+      %div
+        = text_area :property, "address", class: "form-group"
+    = submit_tag "Submit", class: "btn btn-primary"
